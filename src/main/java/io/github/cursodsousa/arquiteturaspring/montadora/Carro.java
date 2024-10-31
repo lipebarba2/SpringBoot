@@ -1,11 +1,13 @@
 package io.github.cursodsousa.arquiteturaspring.montadora;
 
+import io.felipe.aquiteturaspring.montadora.CarroStatus;
+
 import java.awt.*;
 
 public class Carro {
 
     private String modelo;
-    private Color cor;
+    private Color color;
     private Motor motor;
     private Montadora montadora;
 
@@ -21,12 +23,12 @@ public class Carro {
         this.modelo = modelo;
     }
 
-    public Color getCor() {
-        return cor;
+    public Color getColor() {
+        return color;
     }
 
-    public void setCor(Color cor) {
-        this.cor = cor;
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public Motor getMotor() {
@@ -46,9 +48,10 @@ public class Carro {
     }
 
     public CarroStatus darIgnicao(Chave chave) {
-        if(chave.getMontadora() != this.montadora){
-            return new CarroStatus("Não é possível iniciar o carro com esta chave!");
+        if(chave.getMontadora() != this.montadora) {
+            return new CarroStatus("Não é possível ligar o carro");
+        } else {
+            return new CarroStatus("Carro ligado motor: " + motor);
         }
-        return new CarroStatus("Carro ligado. Rodando com o motor "+ motor);
     }
 }
